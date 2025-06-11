@@ -4,6 +4,12 @@ from fastapi.templating import Jinja2Templates
 import shutil
 import os
 import uuid
+import sys
+
+# Dynamically include `rack_modules` directory in import path
+current_dir = os.path.dirname(__file__)
+rack_modules_path = os.path.join(current_dir, "rack_modules")
+sys.path.insert(0, rack_modules_path)  # insert at beginning
 from unified_parser import process_file
 
 rack_app = FastAPI()
